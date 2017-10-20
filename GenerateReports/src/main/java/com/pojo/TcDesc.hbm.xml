@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 26, 2017 4:12:09 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pojo.TcDesc" table="tc_desc" catalog="fcautomation" optimistic-lock="version">
+        <id name="tcId" type="string">
+            <column name="TC_ID" length="100" />
+            <generator class="assigned" />
+        </id>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="1000" not-null="true" />
+        </property>
+        <set name="tcStatuses" table="tc_status" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TC_ID" length="100" not-null="true" />
+            </key>
+            <one-to-many class="com.pojo.TcStatus" />
+        </set>
+    </class>
+</hibernate-mapping>

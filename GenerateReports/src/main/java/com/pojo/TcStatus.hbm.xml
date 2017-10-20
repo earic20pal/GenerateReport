@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 26, 2017 4:12:09 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pojo.TcStatus" table="tc_status" catalog="fcautomation" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tcDesc" class="com.pojo.TcDesc" fetch="select">
+            <column name="TC_ID" length="100" not-null="true" />
+        </many-to-one>
+        <property name="date" type="date">
+            <column name="DATE" length="10" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="10" not-null="true" />
+        </property>
+        <property name="time" type="string">
+            <column name="time" length="10" not-null="true" default="00:00" />
+        </property>
+        <property name="module" type="string">
+            <column name="MODULE" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
